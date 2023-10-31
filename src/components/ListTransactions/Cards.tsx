@@ -28,6 +28,7 @@ export const Cards = ({
     transactionType === 'income'
       ? currencyValue(transactionValue)
       : `- ${currencyValue(transactionValue)}`
+
   return (
     <ChakraCard width="full">
       <CardHeader>

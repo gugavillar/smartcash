@@ -30,26 +30,24 @@ export const ListTransactions = ({ data }: ListTransactionProps) => {
     </Heading>
   )
 
-  if (data.length) {
-    if (variant) {
-      content = (
-        <VStack spacing={4} width="full">
-          {data?.map(({ key, ...transaction }) => (
-            <Cards key={key} {...transaction} />
-          ))}
-        </VStack>
-      )
-    } else {
-      content = (
-        <Table>
-          {data?.map(({ key, ...transaction }) => (
-            <Tr key={key} bg="white">
-              <Row {...transaction} />
-            </Tr>
-          ))}
-        </Table>
-      )
-    }
+  if (data.length && variant) {
+    content = (
+      <VStack spacing={4} width="full">
+        {data?.map(({ key, ...transaction }) => (
+          <Cards key={key} {...transaction} />
+        ))}
+      </VStack>
+    )
+  } else {
+    content = (
+      <Table>
+        {data?.map(({ key, ...transaction }) => (
+          <Tr key={key} bg="white">
+            <Row {...transaction} />
+          </Tr>
+        ))}
+      </Table>
+    )
   }
 
   return (

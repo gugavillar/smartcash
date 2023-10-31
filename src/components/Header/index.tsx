@@ -1,12 +1,11 @@
-import { Button, Center, Flex, Heading, VStack } from '@chakra-ui/react'
+import { Center, Flex, Heading, VStack } from '@chakra-ui/react'
 import { CurrencyDollar } from 'phosphor-react'
 
 import { Transaction } from '@/components'
-import { useAuth } from '@/hooks'
+
+import { LogoutButton } from './LogoutButton'
 
 export const Header = () => {
-  const { logoutSystem } = useAuth()
-
   return (
     <Flex width="full" height={56} maxHeight={56} bg="blue.600">
       <Flex
@@ -31,20 +30,7 @@ export const Header = () => {
             <Heading fontSize="xl">Smart Cash</Heading>
           </Flex>
           <VStack spacing={4}>
-            <Button
-              bg="green.400"
-              color="white"
-              width={{ base: 'full', md: 48, lg: 48 }}
-              height={12}
-              _hover={{
-                bg: 'green.400',
-                opacity: 0.7,
-              }}
-              _active={{ bg: 'green.400' }}
-              onClick={logoutSystem}
-            >
-              Logout
-            </Button>
+            <LogoutButton />
             <Transaction />
           </VStack>
         </Flex>

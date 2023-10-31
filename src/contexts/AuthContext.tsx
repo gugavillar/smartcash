@@ -26,7 +26,7 @@ type AuthContextProviderProps = {
 
 export const AuthContext = createContext({} as AuthContextType)
 
-export function AuthContextProvider(props: AuthContextProviderProps) {
+export const AuthContextProvider = (props: AuthContextProviderProps) => {
   const [user, setUser] = useState<User>()
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     })
   }, [])
 
-  async function signInWithGoogle() {
+  const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider()
     const result = await signInWithPopup(auth, provider)
 
@@ -63,7 +63,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     }
   }
 
-  async function logoutSystem() {
+  const logoutSystem = async () => {
     if (user) {
       await signOut(auth)
       setUser(undefined)

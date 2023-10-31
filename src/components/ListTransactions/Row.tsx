@@ -20,6 +20,7 @@ export const Row = ({
     transactionType === 'income'
       ? currencyValue(transactionValue)
       : `- ${currencyValue(transactionValue)}`
+
   return (
     <>
       <Td>{transactionName}</Td>

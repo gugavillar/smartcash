@@ -1,27 +1,109 @@
-# React + TypeScript + Vite
+# Smart Cash - Registro de Transações Financeiras
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Visão Geral
 
-Currently, two official plugins are available:
+Smart Cash é uma aplicação web que permite o cadastro de entradas e saídas de transações financeiras. Esta aplicação foi construída usando o framework Vite.js e utiliza o Firebase Realtime Database para armazenar e recuperar dados. Além disso, incorpora várias bibliotecas populares, incluindo Chakra UI, React Hook Form, date-fns, Swiper e Yup para fornecer uma experiência de usuário otimizada.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Recursos
 
-## Expanding the ESLint configuration
+- Cadastro de entradas e saídas de transações financeiras.
+- Visualização de transações anteriores.
+- Validação de dados de entrada usando Yup.
+- Interface de usuário elegante e responsiva com Chakra UI.
+- Utilização do Firebase Realtime Database para armazenamento de dados.
+- Fácil navegação entre transações com a ajuda do Swiper.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Pré-requisitos
 
-- Configure the top-level `parserOptions` property like this:
+Antes de começar, verifique se você tem o seguinte instalado em seu ambiente de desenvolvimento:
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+- Node.js (versão 14 ou superior)
+- npm ou Yarn
+
+## Instalação
+
+Siga estas etapas para configurar e executar o projeto em sua máquina:
+
+1. Clone o repositório:
+
+```bash
+Copy code
+git clone https://github.com/seu-usuario/smart-cash.git
+cd smart-cash
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Instale as dependências:
+   Com npm:
+
+```bash
+Copy code
+npm install
+```
+
+Com Yarn:
+
+```bash
+Copy code
+yarn
+```
+
+3. Configure suas credenciais do Firebase:
+
+- Crie um projeto Firebase em Firebase Console.
+- Obtenha suas credenciais e informações de configuração do Firebase Realtime Database.
+- Cole suas credenciais no arquivo .env.local na raiz do projeto, seguindo os valores do arquivo .env.example.
+
+4. Inicie o servidor de desenvolvimento:
+
+Com npm:
+
+```bash
+Copy code
+npm run dev
+```
+
+Com Yarn:
+
+```bash
+Copy code
+yarn dev
+```
+
+5. Acesse o aplicativo em seu navegador em http://localhost:5173.
+
+## Uso
+
+- Abra o aplicativo e registre suas transações financeiras.
+- Visualize suas transações anteriores na página principal.
+- Experimente a navegação de transações com o Swiper.
+- Os dados serão automaticamente sincronizados com o Firebase Realtime Database.
+
+## Bibliotecas e Frameworks Utilizados
+
+- Vite.js
+- Firebase Realtime Database
+- Chakra UI
+- React Hook Form
+- date-fns
+- Swiper
+- Yup
+
+## Contribuindo
+
+Se você deseja contribuir para o desenvolvimento deste projeto, siga estas etapas:
+
+1. Fork este repositório.
+2. Crie uma branch com sua alteração: git checkout -b minha-funcionalidade
+3. Faça as alterações desejadas e comita: git commit -m 'Adicionei uma nova funcionalidade'
+4. Envie para o branch principal: git push origin minha-funcionalidade
+5. Envie um Pull Request.
+
+## Licença
+
+Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para mais detalhes.
+
+## Contato
+
+Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para nos contatar em [grsv.21@gmail.com](email).
+
+Aproveite o Smart Cash para simplificar o registro de suas transações financeiras e gerenciar suas finanças com facilidade!

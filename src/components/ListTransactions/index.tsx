@@ -13,6 +13,8 @@ type ListTransactionProps = {
   data: Array<ExpensesReturn>
 }
 
+let content: JSX.Element
+
 export const ListTransactions = ({ data }: ListTransactionProps) => {
   const [search, setSearch] = useState('')
 
@@ -35,13 +37,13 @@ export const ListTransactions = ({ data }: ListTransactionProps) => {
       )
     : data
 
-  let content = (
-    <Heading textAlign="center" my="auto">
-      Não existe transações cadastras.
-    </Heading>
-  )
-
-  if (data.length && variant) {
+  if (!data.length) {
+    content = (
+      <Heading textAlign="center" my="auto">
+        Não existe transações cadastras.
+      </Heading>
+    )
+  } else if (variant) {
     content = (
       <VStack spacing={4} width="full">
         {transactions?.map(({ key, ...transaction }) => (

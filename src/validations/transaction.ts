@@ -8,6 +8,7 @@ yup.setLocale({
 })
 
 const transactionSchema = yup.object({
+  transactionAccount: yup.string().required(),
   transactionName: yup.string().required(),
   transactionValue: yup
     .string()
@@ -25,7 +26,6 @@ const transactionSchema = yup.object({
     .oneOf(['income', 'outcome'])
     .required()
     .nonNullable(),
-  transactionCategory: yup.string().required(),
 })
 
 export const transactionResolver = yupResolver(transactionSchema)

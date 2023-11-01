@@ -67,7 +67,6 @@ export const ListTransactions = ({ data }: ListTransactionProps) => {
       flexGrow={1}
       maxWidth="100rem"
       px={{ base: 4, md: 20, lg: 40 }}
-      mt={8}
       pb={6}
     >
       <SearchField search={search} setSearch={setSearch} />

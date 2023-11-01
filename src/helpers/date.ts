@@ -33,3 +33,13 @@ export const isValidDate = (date: string | undefined) => {
 
   return isValid(new Date(numberedDate))
 }
+
+export const formattedDateToBR = (date: string) => {
+  if (!date) return ''
+
+  const numberedDate = getNumberDate(date, 'yyyy-MM-dd')
+
+  if (isNaN(numberedDate)) return ''
+
+  return format(new Date(numberedDate), 'dd/MM/yyyy')
+}

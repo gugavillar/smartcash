@@ -1,18 +1,20 @@
 import {
-  Button,
   useBreakpointValue,
   useDisclosure,
   useToast,
+  MenuItem,
 } from '@chakra-ui/react'
 import { FormProvider, useForm } from 'react-hook-form'
 
+import { WrapperDrawer, WrapperModal } from '@/components'
 import { writeExpenseData } from '@/services'
 import { transactionResolver } from '@/validations'
 
-import { TransactionDrawer } from './TransactionDrawer'
-import { TransactionModal } from './TransactionModal'
+import { TransactionForm } from './TransactionForm'
+import { TransactionFormButton } from './TransactionFormButton'
 
 const defaultValues = {
+  transactionAccount: '',
   transactionName: '',
   transactionValue: '',
   transactionType: undefined,
@@ -23,11 +25,11 @@ const defaultValues = {
 type TransactionType = 'income' | 'outcome'
 
 export type FormTransactionType = {
+  transactionAccount: string
   transactionName: string
   transactionValue: string
   transactionDate: string
   transactionType: NonNullable<TransactionType | undefined>
-  transactionCategory: string
 }
 
 export const Transaction = () => {
@@ -83,34 +85,25 @@ export const Transaction = () => {
 
   return (
     <>
-      <Button
-        bg="blue.400"
-        color="white"
-        width={{ base: 'fit-content', md: 48, lg: 48 }}
-        height={12}
-        _hover={{
-          bg: 'blue.400',
-          opacity: 0.7,
-        }}
-        _active={{
-          bg: 'blue.400',
-        }}
-        onClick={onOpen}
-      >
-        Nova transação
-      </Button>
+      <MenuItem onClick={onOpen}>Nova transação</MenuItem>
       <FormProvider {...methods}>
         {variant ? (
-          <TransactionDrawer
+          <WrapperDrawer
             isOpen={isOpen}
             onClose={onClose}
             onSubmit={onSubmit}
+            title="Cadastrar transação"
+            contentBody={<TransactionForm />}
+            contentFooter={<TransactionFormButton />}
           />
         ) : (
-          <TransactionModal
+          <WrapperModal
             isOpen={isOpen}
             onClose={onClose}
             onSubmit={onSubmit}
+            title="Cadastrar transação"
+            contentBody={<TransactionForm />}
+            contentFooter={<TransactionFormButton />}
           />
         )}
       </FormProvider>

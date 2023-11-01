@@ -1,13 +1,11 @@
-import { Center, Flex, Heading, VStack } from '@chakra-ui/react'
+import { Center, Flex, Heading } from '@chakra-ui/react'
 import { CurrencyDollar } from 'phosphor-react'
 
-import { Transaction } from '@/components'
-
-import { LogoutButton } from './LogoutButton'
+import { MenuButton } from '@/components'
 
 export const Header = () => {
   return (
-    <Flex width="full" height={56} maxHeight={56} bg="blue.600">
+    <Flex width="full" height={32} maxHeight={32} bg="blue.600">
       <Flex
         width="full"
         maxWidth="100rem"
@@ -18,7 +16,7 @@ export const Header = () => {
       >
         <Flex
           width="full"
-          height={32}
+          height={16}
           align="center"
           justify="space-between"
           color="white"
@@ -29,10 +27,7 @@ export const Header = () => {
             </Center>
             <Heading fontSize="xl">Smart Cash</Heading>
           </Flex>
-          <VStack spacing={4}>
-            <LogoutButton />
-            <Transaction />
-          </VStack>
+          <MenuButton />
         </Flex>
       </Flex>
     </Flex>

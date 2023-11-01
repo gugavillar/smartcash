@@ -23,7 +23,7 @@ type WriteExpenseDataArguments = {
     transactionValue: number
     transactionType: 'income' | 'outcome' | undefined
     transactionDate: string
-    transactionCategory: string
+    transactionAccount: string
   }
 }
 
@@ -36,9 +36,25 @@ export const writeExpenseData = async ({ data }: WriteExpenseDataArguments) => {
 
 export type ExpensesReturn = {
   key: string
-  transactionCategory: string
   transactionDate: string
   transactionName: string
   transactionType: string
   transactionValue: number
+  transactionAccount: string
+}
+
+type WriteAccountDataArguments = {
+  accountName: string
+}
+
+export const writeAccountData = async (
+  accountName: WriteAccountDataArguments,
+) => {
+  const response = await push(ref(database, 'accounts/'), accountName)
+  return response
+}
+
+export type AccountsReturn = {
+  key: string
+  accountName: string
 }

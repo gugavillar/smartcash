@@ -26,7 +26,6 @@ export const Table = ({ children }: TableProps) => {
           <Tr>
             <Th>Nome</Th>
             <Th>Valor</Th>
-            <Th>Categoria</Th>
             <Th>Data</Th>
           </Tr>
         </Thead>

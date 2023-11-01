@@ -8,27 +8,27 @@ import {
   Heading,
 } from '@chakra-ui/react'
 
-import { currencyValue } from '@/helpers'
+import { currencyValue, formattedDateToBR } from '@/helpers'
 
 type CardsProps = {
   transactionName: string
   transactionValue: number
-  transactionCategory: string
   transactionType: string
+  transactionDate: string
 }
 
 export const Cards = ({
   transactionType,
-  transactionCategory,
   transactionName,
   transactionValue,
+  transactionDate,
 }: CardsProps) => {
   const colorFont = transactionType === 'income' ? 'green.300' : 'red.300'
   const formattedValue =
     transactionType === 'income'
       ? currencyValue(transactionValue)
       : `- ${currencyValue(transactionValue)}`
-
+  const formattedDate = formattedDateToBR(transactionDate)
   return (
     <ChakraCard width="full">
       <CardHeader>
@@ -41,8 +41,7 @@ export const Cards = ({
       </CardHeader>
       <CardBody pt={0}>
         <HStack fontSize="sm" justify="space-between" color="gray.500">
-          <Text>{transactionCategory}</Text>
-          <Text>01/11/2023</Text>
+          <Text>{formattedDate}</Text>
         </HStack>
       </CardBody>
     </ChakraCard>

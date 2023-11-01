@@ -1,4 +1,4 @@
-import { ChangeEvent, Dispatch, SetStateAction } from 'react'
+import { ChangeEvent, Dispatch, SetStateAction, memo } from 'react'
 
 import { Flex, Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
 import { MagnifyingGlass } from 'phosphor-react'
@@ -8,7 +8,7 @@ type SearchFieldProps = {
   setSearch: Dispatch<SetStateAction<string>>
 }
 
-export const SearchField = ({ search, setSearch }: SearchFieldProps) => {
+export const SearchField = memo(({ search, setSearch }: SearchFieldProps) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value)
   }
@@ -36,4 +36,6 @@ export const SearchField = ({ search, setSearch }: SearchFieldProps) => {
       </InputGroup>
     </Flex>
   )
-}
+})
+
+SearchField.displayName = 'SearchField'

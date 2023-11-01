@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 import {
   Menu,
   MenuList,
@@ -9,7 +11,7 @@ import { CaretDown } from 'phosphor-react'
 
 import { Transaction, LogoutButton, Accounts } from '@/components'
 
-export const MenuButton = () => {
+export const MenuButton = memo(() => {
   return (
     <Menu placement="bottom-end">
       <ChakraMenuButton
@@ -30,4 +32,6 @@ export const MenuButton = () => {
       </MenuList>
     </Menu>
   )
-}
+})
+
+MenuButton.displayName = 'MenuButton'

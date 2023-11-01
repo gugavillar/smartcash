@@ -1,3 +1,5 @@
+import { useMemo } from 'react'
+
 import { Box, Flex, useBreakpointValue } from '@chakra-ui/react'
 import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from 'phosphor-react'
 import { SwiperSlide, Swiper } from 'swiper/react'
@@ -23,7 +25,10 @@ export const Summary = ({ totalOfIncome, totalOfOutcome }: SummaryProps) => {
     lg: 3,
   })
 
-  const total = totalOfIncome - totalOfOutcome
+  const total = useMemo(
+    () => totalOfIncome - totalOfOutcome,
+    [totalOfIncome, totalOfOutcome],
+  )
 
   return (
     <Box width="full" maxWidth="90rem" px={{ base: 4, md: 20, lg: 40 }}>

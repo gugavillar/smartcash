@@ -18,6 +18,7 @@ type AuthContextType = {
   user: User | undefined
   signInWithGoogle: () => Promise<void>
   logoutSystem: () => Promise<void>
+  isLogged: boolean
 }
 
 type AuthContextProviderProps = {
@@ -28,10 +29,12 @@ export const AuthContext = createContext({} as AuthContextType)
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const [user, setUser] = useState<User>()
+  const [isLogged, setIsLogged] = useState(true)
 
   useEffect(() => {
     return onAuthStateChanged(auth, (user) => {
       if (user) {
+        setIsLogged(true)
         const { displayName, uid } = user
 
         if (!uid || !displayName) {
@@ -42,6 +45,8 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
           id: uid,
           name: displayName,
         })
+      } else {
+        setIsLogged(false)
       }
     })
   }, [])
@@ -51,27 +56,34 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     const result = await signInWithPopup(auth, provider)
 
     if (result.user) {
+      setIsLogged(true)
       const { displayName, uid } = result.user
 
       if (!displayName || !uid) {
         throw new Error('Missing information from Google Account.')
       }
+
       setUser({
         id: uid,
         name: displayName,
       })
+    } else {
+      setIsLogged(false)
     }
   }
 
   const logoutSystem = async () => {
     if (user) {
       await signOut(auth)
+      setIsLogged(false)
       setUser(undefined)
     }
   }
 
   return (
-    <AuthContext.Provider value={{ user, signInWithGoogle, logoutSystem }}>
+    <AuthContext.Provider
+      value={{ user, signInWithGoogle, logoutSystem, isLogged }}
+    >
       {children}
     </AuthContext.Provider>
   )

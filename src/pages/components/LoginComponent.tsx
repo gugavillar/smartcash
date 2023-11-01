@@ -16,7 +16,7 @@ import { useAuth } from '@/hooks'
 import { AppComponent } from './AppComponent'
 
 export const LoginComponent = () => {
-  const { user, signInWithGoogle } = useAuth()
+  const { user, signInWithGoogle, isLogged } = useAuth()
   const imageSize = useBreakpointValue({
     base: 36,
     md: 48,
@@ -62,6 +62,7 @@ export const LoginComponent = () => {
               _hover={{ bg: 'green.400', opacity: 0.7 }}
               _active={{ bg: 'green.400' }}
               onClick={signInWithGoogle}
+              isLoading={isLogged}
             >
               Entrar
             </Button>

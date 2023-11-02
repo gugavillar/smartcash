@@ -1,9 +1,4 @@
-import {
-  useBreakpointValue,
-  useDisclosure,
-  useToast,
-  MenuItem,
-} from '@chakra-ui/react'
+import { useDisclosure, MenuItem, CreateToastFnReturn } from '@chakra-ui/react'
 import { FormProvider, useForm } from 'react-hook-form'
 
 import { WrapperDrawer, WrapperModal } from '@/components'
@@ -32,30 +27,18 @@ export type FormTransactionType = {
   transactionType: NonNullable<TransactionType | undefined>
 }
 
-export const Transaction = () => {
+type TransactionProps = {
+  variant: boolean | undefined
+  toast: CreateToastFnReturn
+}
+
+export const Transaction = ({ variant, toast }: TransactionProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const toast = useToast({
-    position: 'top-right',
-    variant: 'left-accent',
-    isClosable: true,
-    duration: 3000,
-  })
 
   const methods = useForm<FormTransactionType>({
     defaultValues,
     resolver: transactionResolver,
   })
-
-  const variant = useBreakpointValue(
-    {
-      base: true,
-      md: false,
-      lg: false,
-    },
-    {
-      fallback: undefined,
-    },
-  )
 
   if (variant === undefined) return null
 

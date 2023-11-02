@@ -1,9 +1,11 @@
+import { memo } from 'react'
+
 import { Center, Flex, Heading } from '@chakra-ui/react'
 import { CurrencyDollar } from 'phosphor-react'
 
 import { MenuButton } from '@/components'
 
-export const Header = () => {
+export const Header = memo(() => {
   return (
     <Flex width="full" height={32} maxHeight={32} bg="blue.600">
       <Flex
@@ -32,4 +34,6 @@ export const Header = () => {
       </Flex>
     </Flex>
   )
-}
+})
+
+Header.displayName = 'Header'

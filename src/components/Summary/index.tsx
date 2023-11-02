@@ -4,8 +4,6 @@ import { Box, Flex, useBreakpointValue } from '@chakra-ui/react'
 import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from 'phosphor-react'
 import { SwiperSlide, Swiper } from 'swiper/react'
 
-import { useFinancial } from '@/hooks'
-
 import { AccountField } from './AccountField'
 import { SummaryCard } from './SummaryCard'
 
@@ -17,8 +15,6 @@ type SummaryProps = {
 }
 
 export const Summary = ({ totalOfIncome, totalOfOutcome }: SummaryProps) => {
-  const { accounts, selectedAccount, setSelectedAccount } = useFinancial()
-
   const slidesPerView = useBreakpointValue({
     base: 1.15,
     md: 2.2,
@@ -32,11 +28,7 @@ export const Summary = ({ totalOfIncome, totalOfOutcome }: SummaryProps) => {
 
   return (
     <Box width="full" maxWidth="90rem" px={{ base: 4, md: 20, lg: 40 }}>
-      <AccountField
-        account={selectedAccount}
-        setAccount={setSelectedAccount}
-        accounts={accounts}
-      />
+      <AccountField />
       <Flex py={4} alignSelf="center">
         <Swiper
           slidesPerView={slidesPerView}

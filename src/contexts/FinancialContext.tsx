@@ -47,15 +47,17 @@ export const FinancialContextProvider = ({
       expenses = []
       if (snapshots.exists()) {
         snapshots.forEach((transaction) => {
-          expenses.push({ key: transaction.key, ...transaction.val() })
+          if (selectedAccount) {
+            const { transactionAccount } = transaction.val()
+            if (transactionAccount === selectedAccount) {
+              expenses.push({ key: transaction.key, ...transaction.val() })
+            }
+          } else {
+            expenses.push({ key: transaction.key, ...transaction.val() })
+          }
         })
       }
-      const newExpenses = selectedAccount
-        ? expenses?.filter(
-            (expense) => expense.transactionAccount === selectedAccount,
-          )
-        : expenses
-      setTransactions(newExpenses)
+      setTransactions(expenses)
     })
   }, [selectedAccount])
 

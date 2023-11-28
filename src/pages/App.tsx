@@ -1,13 +1,11 @@
-import { AuthContextProvider, FinancialContextProvider } from '@/contexts'
+import { AuthContextProvider } from '@/contexts'
 
 import { LoginComponent } from './components/LoginComponent'
 
 export const App = () => {
   return (
     <AuthContextProvider>
-      <FinancialContextProvider>
-        <LoginComponent />
-      </FinancialContextProvider>
+      <LoginComponent />
     </AuthContextProvider>
   )
 }

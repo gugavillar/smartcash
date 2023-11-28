@@ -11,6 +11,7 @@ import {
 import { CurrencyDollar } from 'phosphor-react'
 
 import { Login } from '@/components'
+import { FinancialContextProvider } from '@/contexts'
 import { useAuth } from '@/hooks'
 
 import { AppComponent } from './AppComponent'
@@ -23,7 +24,13 @@ export const LoginComponent = () => {
     lg: 64,
   })
 
-  if (user?.id) return <AppComponent />
+  if (user?.id) {
+    return (
+      <FinancialContextProvider>
+        <AppComponent />
+      </FinancialContextProvider>
+    )
+  }
 
   return (
     <Flex
